@@ -58,6 +58,7 @@ if __name__ == "__main__":
     # not_filesystem_backups = backups_not_in_filesystem()
     # print(not_filesystem_backups)
     not_ptero_backups = backups_not_in_ptero()
+    print(f"Found {len(not_ptero_backups)} backups on the filesystem which are not in ptero. Preparing to delete all of them.")
     for backup_uuid in not_ptero_backups:
         backup_path = f'{backup_directory}{backup_uuid}.tar.gz'
         print(f"Deleting nonexistent backup '{backup_path}' from filesystem.")
