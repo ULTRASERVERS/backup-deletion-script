@@ -7,8 +7,7 @@ from time import sleep
 
 load_dotenv()
 
-backup_directory = "/var/lib/pterodactyl/backups/"
-
+backup_directory = os.getenv('BACKUP_DIRECTORY')
 pterodactyl_url = os.getenv('PTERODACTYL_URL')
 pterodactyl_token = os.getenv('PTERODACTYL_AUTH_TOKEN')
 
