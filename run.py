@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 import requests
 from dotenv import load_dotenv
+import sys
 
 load_dotenv()
 
@@ -35,7 +36,11 @@ def backups_not_in_ptero():
     return backups_not_in_ptero_list
 
 
-
+###
+# WARNING
+# - This will always report a list of backups if there are multiple nodes configured in Pterodactyl
+# Due to backups from servers on other nodes not being in the filesystem of this node.
+###
 def backups_not_in_filesystem():
     ptero_backups = get_all_backups_from_ptero()
     local_backups = get_all_filesystem_backups()
@@ -63,7 +68,7 @@ def get_all_backups_from_ptero():
     return all_backups_from_ptero
 
 if __name__ == "__main__":
-    not_filesystem_backups = backups_not_in_filesystem()
-    print(not_filesystem_backups)
-    #not_ptero_backups = backups_not_in_ptero()
-    #print(not_ptero_backups)
+    # not_filesystem_backups = backups_not_in_filesystem()
+    # print(not_filesystem_backups)
+    not_ptero_backups = backups_not_in_ptero()
+    print(not_ptero_backups)
